@@ -1,9 +1,18 @@
+//app/page.tsx
 'use client'
 import { useAccount } from 'wagmi';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const { isConnected } = useAccount();
+  // const { isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
 
+
+  useEffect(() => {
+    if (isConnected) {
+      console.log('Wallet Address:', address);
+    }
+  }, [isConnected, address]);
   return (
     <main className="min-h-screen px-8 py-8 pb-12 flex-1 flex flex-col items-center">
 
